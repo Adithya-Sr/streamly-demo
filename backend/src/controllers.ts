@@ -70,16 +70,16 @@ export const loginHandler = async (req: Request, res: Response) => {
 
     res.cookie("access-token", accessToken, {
       httpOnly: true,
-      secure: false,
-      sameSite: "lax",
+      secure: true,
+      sameSite: "none",
       expires: new Date(Date.now() + ONE_DAY),
       path: "/",
     });
 
     res.cookie("refresh-token", refreshToken, {
       httpOnly: true,
-      secure: false,
-      sameSite: "lax",
+      secure: true,
+      sameSite: "none",
       expires: new Date(Date.now() + SEVEN_DAYS),
       path: "/",
     });

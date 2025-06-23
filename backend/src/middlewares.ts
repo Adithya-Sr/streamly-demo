@@ -62,8 +62,8 @@ export const manageUserSession = (
       //clear access-token cookie due to the underlying jwt being invalid
       res.clearCookie("access-token", {
         httpOnly: true,
-        secure: false,
-        sameSite: "lax",
+        secure: true,
+        sameSite: "none",
         path: "/",
       });
     }
@@ -82,8 +82,8 @@ export const manageUserSession = (
       const ONE_DAY = 1000 * 60 * 60 * 24;
       res.cookie("access-token", newAccessToken, {
         httpOnly: true,
-        secure: false,
-        sameSite: "lax",
+        secure: true,
+        sameSite: "none",
         expires: new Date(Date.now() + ONE_DAY),
         path: "/",
       });
@@ -97,8 +97,8 @@ export const manageUserSession = (
       }
       res.clearCookie("refresh-token", {
         httpOnly: true,
-        secure: false,
-        sameSite: "lax",
+        secure: true,
+        sameSite: "none",
         path: "/",
       });
       res.status(403).json({ error: "Invalid Tokens" });
