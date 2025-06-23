@@ -5,6 +5,7 @@ import * as jwt from "jsonwebtoken";
 import config from "./config";
 import { getVideosPaginationSchema } from "./input_validation_schemas";
 import { z } from "zod";
+import { clearState } from "./helpers";
 export const healthCheckhandler = (req: Request, res: Response) => {
   res.status(200).json({ message: "ok" });
 };
@@ -14,6 +15,8 @@ export const signupHandler = async (req: Request, res: Response) => {
   //parse request body
   const { name, email, password } = req.body;
   try {
+    //clear state
+    clearState(req, res);
     //store user data in db
     const data = await UserModel.create({ name, email, password });
     res
@@ -34,6 +37,8 @@ export const loginHandler = async (req: Request, res: Response) => {
   //parse request body
   const { email, password } = req.body;
   try {
+    //clear state
+    clearState(req, res);
     //verify email present
     const user = await UserModel.findOne({ email });
     if (!user) {
