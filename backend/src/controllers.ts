@@ -47,8 +47,6 @@ export const loginHandler = async (req: Request, res: Response) => {
     }
 
     //verify password matches
-    const salt = await bcrypt.genSalt(10);
-    const hashedPassword = await bcrypt.hash(password, salt);
     const passwordMatch = await bcrypt.compare(password, user.password);
     if (!passwordMatch) {
       res.status(403).json({ error: "Incorrect password" });
