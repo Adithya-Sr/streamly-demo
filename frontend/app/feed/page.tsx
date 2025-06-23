@@ -17,13 +17,16 @@ interface Video {
 }
 const getUserProfile = async () => {
   try {
-    const res = await fetch("http://localhost:8000/api/v1/profile", {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      credentials: "include",
-    });
+    const res = await fetch(
+      "https://streamly-demo.onrender.com/api/v1/profile",
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        credentials: "include",
+      }
+    );
     if (!res.ok) {
       throw new Error(`${res.status}:${res.statusText}`);
     }
@@ -41,7 +44,7 @@ const getVideoFeed = async () => {
   try {
     const res = await fetch(
       //used sample pagination values for demonstration
-      "http://localhost:8000/api/v1/videos?page=1&limit=10",
+      "https://streamly-demo.onrender.com/api/v1/videos?page=1&limit=10",
       {
         method: "GET",
         headers: {

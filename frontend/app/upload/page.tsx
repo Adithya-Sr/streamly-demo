@@ -46,20 +46,23 @@ const Upload = () => {
       console.log(jsonRes);
       const videoUrl = jsonRes.url;
 
-      const res = await fetch("http://localhost:8000/api/v1/upload", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        credentials: "include",
-        body: JSON.stringify({
-          title,
-          description,
-          visibility,
-          url: videoUrl,
-          userId: user.id,
-        }),
-      });
+      const res = await fetch(
+        "https://streamly-demo.onrender.com/api/v1/upload",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          credentials: "include",
+          body: JSON.stringify({
+            title,
+            description,
+            visibility,
+            url: videoUrl,
+            userId: user.id,
+          }),
+        }
+      );
 
       if (res.ok) {
         alert("Uploaded successfully!");

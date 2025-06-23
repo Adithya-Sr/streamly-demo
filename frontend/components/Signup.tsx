@@ -11,19 +11,22 @@ const Signup = () => {
     e.preventDefault();
 
     try {
-      let res = await fetch("http://localhost:8000/api/v1/signup", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        credentials: "include",
-        body: JSON.stringify({ name, email, password, retypePassword }),
-      });
+      let res = await fetch(
+        "https://streamly-demo.onrender.com/api/v1/signup",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          credentials: "include",
+          body: JSON.stringify({ name, email, password, retypePassword }),
+        }
+      );
       if (!res.ok) {
         throw new Error(`${res.status}:${res.statusText}`);
       }
 
-      res = await fetch("http://localhost:8000/api/v1/login", {
+      res = await fetch("https://streamly-demo.onrender.com/api/v1/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
