@@ -14,7 +14,7 @@ app.use(cookieParser());
 app.use(helmet());
 app.use(
   cors({
-    origin: "https://streamly-demo.vercel.app/",
+    origin: "https://streamly-demo.vercel.app",
     credentials: true,
   })
 );
